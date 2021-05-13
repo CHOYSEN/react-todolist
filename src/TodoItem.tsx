@@ -28,7 +28,9 @@ export default function TodoItems(props: Props) {
         className={['shadow-md border-gray-500 p-4 mb-1 cursor-pointer', item.isFinished ? 'line-through bg-gray-100' : ''].join(' ')}
         key={item.createdAt}
         title={new Date(item.createdAt).toLocaleString()}
-        onClick={() => switchTodoStatus(index)}>{item.content}
+        onClick={() => switchTodoStatus(index)}
+      >
+        {item.content}
       </section>
     ).reverse()
   }</>
