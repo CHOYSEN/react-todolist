@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, KeyboardEvent, MutableRefObject } from 'react'
+import React, { useRef, useState, useEffect, KeyboardEvent } from 'react'
 
 import TodoItems, { ITodoItem } from './TodoItem'
 
@@ -9,7 +9,8 @@ import { Fab, Snackbar, TextField } from '@material-ui/core'
 export default function App() {
   const [todos, setTodos] = useState<ITodoItem[]>([])
   const [showToast, setToastShow] = useState<boolean>(false)
-  const inputElement = useRef() as MutableRefObject<HTMLInputElement>
+
+  const inputElement = useRef<HTMLInputElement>()
 
   useEffect(() => {
     const todosMemory = localStorage.getItem('todos')
@@ -23,14 +24,14 @@ export default function App() {
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
 
-  const focusInput = () => inputElement.current.focus()
+  const focusInput = () => inputElement.current?.focus()
 
   const addTodo = (event: KeyboardEvent) => {
     if (event.code === 'Enter') {
       event.stopPropagation()
 
-      const content = inputElement.current.value
-      if (content === '') {
+      const content = inputElement.current?.value
+      if (!content) {
         focusInput()
         setToastShow(() => true)
       } else {
@@ -39,7 +40,7 @@ export default function App() {
           isFinished: false,
           createdAt: Date.now()
         }])
-        inputElement.current.value = ''
+        inputElement.current!.value = ''
       }
     }
   }
