@@ -20,7 +20,6 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    inputElement.current.value = ''
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
 
@@ -40,6 +39,7 @@ export default function App() {
           isFinished: false,
           createdAt: Date.now()
         }])
+        inputElement.current.value = ''
       }
     }
   }
