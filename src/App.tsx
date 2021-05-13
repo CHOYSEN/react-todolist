@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, KeyboardEvent } from 'react'
 
-import TodoItems, { ITodoItem } from './TodoItem'
+import TodoItem, { ITodoItem } from './TodoItem'
 
 import { Add } from '@material-ui/icons'
 import { Alert } from '@material-ui/lab'
@@ -48,7 +48,7 @@ export default function App() {
   return <>
     <main className="max-w-400px m-auto py-20">
       <TextField className="w-full !mb-5" inputProps={{ ref: inputElement, onKeyPress: addTodo }} label="Add a item!" />
-      <TodoItems todos={todos} setTodos={setTodos}></TodoItems>
+      <TodoItem todos={todos} setTodos={setTodos}></TodoItem>
     </main>
 
     <Snackbar open={showToast} autoHideDuration={3000} onClose={() => setToastShow(() => false)} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
