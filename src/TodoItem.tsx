@@ -34,7 +34,7 @@ export default function TodoItem(props: Props) {
           >
             {item.content}
           </section>
-        ).reverse()
+        )
       }
     </div>
   )

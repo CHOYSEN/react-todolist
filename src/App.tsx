@@ -35,11 +35,11 @@ export default function App() {
         focusInput()
         setToastShow(() => true)
       } else {
-        setTodos(value => [...value, {
+        setTodos(todos => [{
           content,
           isFinished: false,
           createdAt: Date.now()
-        }])
+        }, ...todos])
         inputElement.current!.value = ''
       }
     }
